@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/premium-photo/background-math-calculator-red-numbers-white-background-copy-space_127770-369.jpg'); /* Replace with your image file name */
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: flex-end; /* Move content to the right */
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 255, 255, 0.5);
+            padding: 10px; /* Smaller padding */
+            text-align: center;
+            width: 300px; /* Smaller width */
+        }
+
+        .calculator input[type="text"] {
+            width: 100%;
+            padding: 15px; /* Adjusted padding */
+            font-size: 36px; /* Smaller font size */
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 15px; /* Adjusted margin */
+            background-color: #000;
+            color: #0ff;
+            text-align: right;
+            text-shadow: 0 0 10px rgb(47, 28, 133);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 20px; /* Adjusted padding */
+            font-size: 24px; /* Smaller font size */
+            background-color: #007bff;
+            color: #0ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick="addToDisplay('7')">7</button>
+            <button onclick="addToDisplay('8')">8</button>
+            <button onclick="addToDisplay('9')">9</button>
+            <button onclick="addToDisplay('+')">+</button>
+            <button onclick="addToDisplay('4')">4</button>
+            <button onclick="addToDisplay('5')">5</button>
+            <button onclick="addToDisplay('6')">6</button>
+            <button onclick="addToDisplay('-')">-</button>
+            <button onclick="addToDisplay('1')">1</button>
+            <button onclick="addToDisplay('2')">2</button>
+            <button onclick="addToDisplay('3')">3</button>
+            <button onclick="addToDisplay('*')">*</button>
+            <button onclick="addToDisplay('0')">0</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="addToDisplay('/')">/</button>
+        </div>
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                const result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
